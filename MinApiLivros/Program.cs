@@ -12,23 +12,25 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ILivroService, LivroService>();
 
-string mySqlConnection =
-    builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? throw new
-    Exception("A string de conexão 'DefaultConnection' não foi configurada.");
-
 builder.Services.AddDbContext<AppDbContext>(options =>
-                    options.UseMySql(mySqlConnection,
-                    ServerVersion.AutoDetect(mySqlConnection)));
+{
+    string ENVIRONMENT = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")!;
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<AppDbContext>();
+    if (ENVIRONMENT == "Testing") 
+    {
+        // Usa banco em memÃ³ria apenas no ambiente de teste
+        options.UseInMemoryDatabase("MotoRentalDatabase");
+    }
+    else
+    {
+        // Use seu banco de preferÃªncia em outros ambientes
+        options.UseInMemoryDatabase("AppDbInMemory");
+    }
+});
 
-builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// configura o middleware de exceção
 app.UseStatusCodePages(async statusCodeContext
     => await Results.Problem(statusCode: statusCodeContext.HttpContext.Response.StatusCode)
         .ExecuteAsync(statusCodeContext.HttpContext));
@@ -42,8 +44,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGroup("/identity/").MapIdentityApi<IdentityUser>();
-
 app.RegisterLivrosEndpoints();
 
 app.Run();
+
+public partial class Program { }
