@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinApiLivros", "MinApiLivros\MinApiLivros.csproj", "{3078FBD4-693D-44F5-9278-0D0CAFE55BD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinApiLivros.Test", "MinApiLivros.Test\MinApiLivros.Test.csproj", "{5D8D0247-DDB6-4E29-AC5A-87D069380A93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3078FBD4-693D-44F5-9278-0D0CAFE55BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3078FBD4-693D-44F5-9278-0D0CAFE55BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3078FBD4-693D-44F5-9278-0D0CAFE55BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D8D0247-DDB6-4E29-AC5A-87D069380A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8D0247-DDB6-4E29-AC5A-87D069380A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8D0247-DDB6-4E29-AC5A-87D069380A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8D0247-DDB6-4E29-AC5A-87D069380A93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
